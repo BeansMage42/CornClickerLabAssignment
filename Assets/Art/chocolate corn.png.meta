@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3b5d27d926d093a4ca5ba6103c97042a
+guid: 96ddc85971b99ae4b9c5b4387fc9dcb5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7504379274925192543
-    second: 23258-6-popcorn-photos_0
+      213: -7435414745087511393
+    second: chocolate corn_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 23258-6-popcorn-photos_0
+      name: chocolate corn_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 92
-        width: 921
-        height: 813
+        x: 374
+        y: 359
+        width: 1086
+        height: 734
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1aac7423fc61bd790800000000000000
-      internalID: -7504379274925192543
+      spriteID: f947b511fa910d890800000000000000
+      internalID: -7435414745087511393
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      23258-6-popcorn-photos_0: -7504379274925192543
+      chocolate corn_0: -7435414745087511393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

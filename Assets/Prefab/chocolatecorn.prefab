@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5714267015910344830}
   - component: {fileID: 8905223525292045128}
   m_Layer: 0
-  m_Name: Popcorn
+  m_Name: chocolatecorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7504379274925192543, guid: 3b5d27d926d093a4ca5ba6103c97042a, type: 3}
+  m_Sprite: {fileID: -7435414745087511393, guid: 96ddc85971b99ae4b9c5b4387fc9dcb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

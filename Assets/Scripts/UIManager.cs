@@ -1,13 +1,15 @@
+using System;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonPersistant<UIManager>
 {
-    public static UIManager instance;
 
     [Header("UI Elements")]
     [SerializeField] TextMeshProUGUI scoreUI;
     [SerializeField] TextMeshProUGUI cornPerClickText;
+    [SerializeField] TextMeshProUGUI cornPerSecondText;
     [SerializeField] GameObject scoreUIObj;
 
     //Maybe later
@@ -19,28 +21,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] float shakeCooldownSpeed;*/
     
 
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            if (instance != this)
-            {
-                Destroy(this);
-            }
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
     private void Start()
     {
         scoreUIObj = scoreUI.gameObject;
+        CornPerSecond(0);
     }
     public void UpdateScore(float newScore)
     {
-        scoreUI.text = "Corn Clicked: " + newScore;
+        scoreUI.text = "Corn Clicked: " + String.Format("{0:0.00}", newScore);
     }
     public void TextColor(Color color)
     {
@@ -55,5 +43,9 @@ public class UIManager : MonoBehaviour
     public void CornPerClick(float cornPerClick)
     {
         cornPerClickText.text = $"Corn Per Click: {cornPerClick}";
+    }
+    public void CornPerSecond(float cornPerSecond)
+    {
+        cornPerSecondText.text = $"Corn Per Second: {cornPerSecond}";
     }
 }

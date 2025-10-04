@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 3b5d27d926d093a4ca5ba6103c97042a
+guid: 1d3ed2731e266184ea3d1c0279985e9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7504379274925192543
-    second: 23258-6-popcorn-photos_0
+      213: -3906750890232413474
+    second: Caramel-Popcorn-PNG-Images_0
+  - first:
+      213: 6791652575571479509
+    second: Caramel-Popcorn-PNG-Images_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 23258-6-popcorn-photos_0
+      name: Caramel-Popcorn-PNG-Images_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 92
-        width: 921
-        height: 813
+        x: 118
+        y: 121
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1aac7423fc61bd790800000000000000
-      internalID: -7504379274925192543
+      spriteID: ed281c1a3ce68c9c0800000000000000
+      internalID: -3906750890232413474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caramel-Popcorn-PNG-Images_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 31
+        width: 196
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5db0ec4a80cc04e50800000000000000
+      internalID: 6791652575571479509
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      23258-6-popcorn-photos_0: -7504379274925192543
+      Caramel-Popcorn-PNG-Images_0: -3906750890232413474
+      Caramel-Popcorn-PNG-Images_1: 6791652575571479509
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

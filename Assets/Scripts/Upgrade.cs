@@ -2,40 +2,31 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Upgrade : MonoBehaviour
+public abstract class Upgrade : MonoBehaviour
 {
-    [SerializeField] string upgradeName;
-    [SerializeField] string description;
-    [SerializeField] float baseCost;
-    [SerializeField] float costIncreaseMod;
-    [SerializeField] float addedCornPerClick;
-    int upgradeLevel = 1;
-    float cost;
-    [SerializeField] TextMeshProUGUI shopText;
-    [SerializeField] Button shopButton;
+    [SerializeField] protected string upgradeName;
+    [SerializeField] protected string description;
+    [SerializeField] protected float baseCost;
+    [SerializeField] protected float costIncreaseMod;
+    [SerializeField] protected float amountIncrease;
+    protected int upgradeLevel = 0;
+    protected float cost;
+    [SerializeField] protected TextMeshProUGUI shopText;
+    [SerializeField] protected Button shopButton;
+    [SerializeField] protected ICornSpawner spawner;
 
-    CornClicker player;
+    protected CornClicker player;
 
     private void Start()
     {
         cost = baseCost;
-        UIManager.instance.SetButtonText(shopText, upgradeName, description, cost, upgradeLevel);
+        UIManager.Instance.SetButtonText(shopText, upgradeName, description, cost, upgradeLevel);
         player = FindAnyObjectByType<CornClicker>();
     }
-    public void OnPurchase()
+    public abstract void OnPurchase();
+    protected void IncreasePrice()
     {
-        if (player.score >= cost)
-        {
-            player.ReduceScore(cost);
-            upgradeLevel++;
-            IncreasePrice();
-            UIManager.instance.SetButtonText(shopText, upgradeName, description, cost, upgradeLevel);
-            player.flatCornUpgradePurchased(addedCornPerClick);
-        }
-    }
-    private void IncreasePrice()
-    {
-        cost = Mathf.Ceil( baseCost + (upgradeLevel * Mathf.Exp(2) * costIncreaseMod));
+        cost = Mathf.Ceil( baseCost * (costIncreaseMod * Mathf.Exp(upgradeLevel)));
         
     }
     

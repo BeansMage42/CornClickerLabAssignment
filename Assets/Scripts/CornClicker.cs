@@ -10,56 +10,55 @@ public class CornClicker : MonoBehaviour
     [SerializeField] private float basePerClick = 1;
     private float cornPerClickFlatModifier = 0;
     private float cornPerClickMultiplier = 1;
-    [Header("popcorn spawning")]
-    [SerializeField] Vector2 spawnCenter;
-    [SerializeField] float spawnRadius;
+    private float cornPerSecond = 0;
+    private float cornPerSecondMult = 1;
 
 
     private void Start()
     {
-        UIManager.instance.CornPerClick((basePerClick + cornPerClickFlatModifier) * cornPerClickMultiplier);
+        UIManager.Instance.CornPerClick((basePerClick + cornPerClickFlatModifier) * cornPerClickMultiplier);
     }
 
     public void CornClicked()
     {
         score += (basePerClick + cornPerClickFlatModifier) * cornPerClickMultiplier;
         
-        SpawnPopcorn();
-        SoundManager.instance.PlayPopSound();
+        PopCornMaker.Instance.ClickPopCornSpawn();
+        SoundManager.Instance.PlayPopSound();
 
-        UIManager.instance.UpdateScore(score);
+        UIManager.Instance.UpdateScore(score);
 
         if (score > 50)
         {
-            UIManager.instance.TextColor(Color.yellow);
+            UIManager.Instance.TextColor(Color.yellow);
         }
     }
 
-    private void SpawnPopcorn()
+    private void Update()
     {
-        Quaternion rot = Random.rotation;
-        rot.x = 0;
-        rot.y = 0;
-
-        Vector2 randomPos = Random.insideUnitCircle * spawnRadius + spawnCenter;
-
-        GameObject spawnedPopCorn = Instantiate(popCornObj, randomPos,rot);
-        spawnedPopCorn.GetComponent<Rigidbody2D>().linearVelocity = Vector2.up * 5;
-        Destroy(spawnedPopCorn, 5f);
-
+        score += (cornPerSecond * cornPerSecondMult) * Time.deltaTime;
+        UIManager.Instance.UpdateScore(score);
     }
+    
 
     public void ReduceScore(float scoreReduction)
     {
         score -= scoreReduction;
-        UIManager.instance.UpdateScore(score);
+        UIManager.Instance.UpdateScore(score);
     }
 
     public void flatCornUpgradePurchased(float upgradeBonus)
     {
         cornPerClickFlatModifier += upgradeBonus;
-        UIManager.instance.CornPerClick((basePerClick + cornPerClickFlatModifier) * cornPerClickMultiplier);
+        UIManager.Instance.CornPerClick((basePerClick + cornPerClickFlatModifier) * cornPerClickMultiplier);
 
+    }
+    public void CornPerSecondUpgrade(float upgradeBonus)
+    {
+        cornPerSecond += upgradeBonus;
+        PopCornMaker.Instance.CPSUpdate(cornPerSecond);
+        UIManager.Instance.CornPerSecond((cornPerSecond * cornPerSecondMult));
+    
     }
     
 }
