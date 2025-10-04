@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalPopcornSpawner
   cornToSpawn: {fileID: 476535317020620322, guid: 773faac4d10315c4fb45533bdeef3912, type: 3}
-  spawnCenter: {x: 0, y: 0}
+  spawnCenter: {x: 0, y: 2}
   spawnRadius: 5
 --- !u!1 &1755653148
 GameObject:

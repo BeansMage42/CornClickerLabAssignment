@@ -7,7 +7,7 @@ public class ChocoCornSpawner : ICornSpawner
     {
         if (isActive)
         {
-            for (int i; i < 1; i++)
+            for (int i = 0; i < 1; i++)
             {
                 Vector2 randomPos = Random.insideUnitCircle * 5 + Vector2.zero;
                 randomPos.y = 5f;
