@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using TMPro;
+using TMPro.Examples;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -12,20 +14,52 @@ public class UIManager : SingletonPersistant<UIManager>
     [SerializeField] TextMeshProUGUI cornPerSecondText;
     [SerializeField] GameObject scoreUIObj;
 
+
     //Maybe later
-    /*[Header("Shake variables")]
-    [SerializeField] float baseShakeIntensity = 1.0f;
-    [SerializeField] float maxShakeIntensity;
-    [SerializeField] float shakeIntensityIncreaseSpeed;
-    float shakeIntensityModifier;
-    [SerializeField] float shakeCooldownSpeed;*/
-    
+    [SerializeField] private VertexJitter jitter;
+    private float jitterSpeed = 0;
+    private float jitterTimer = 2;
+    private float maxJitter = 2;
+    private float currentJitter;
+    [SerializeField] private float jitterClickBoost = 0.1f;
 
     private void Start()
     {
         scoreUIObj = scoreUI.gameObject;
         CornPerSecond(0);
+        GameManager.Instance.cornClicker.OnClickAction += UpdateScore;
+
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            jitterSpeed = 1;
+            jitterTimer = 2;
+            currentJitter += jitterClickBoost;
+        }
+        else
+        {
+            jitterTimer -= Time.deltaTime;
+            if( jitterTimer <= 0 && currentJitter > 0)
+            {
+                jitterTimer = 0;
+                currentJitter -= Time.deltaTime;
+                
+                
+            }
+            if(currentJitter <= 0)
+            {
+                jitterSpeed = 0;
+            }
+        }
+        jitter.AngleMultiplier = currentJitter;
+        jitter.SpeedMultiplier = jitterSpeed;
+        jitter.CurveScale = currentJitter * 0.5f * 25f;
+
+        
+    }
+
     public void UpdateScore(float newScore)
     {
         scoreUI.text = "Corn Clicked: " + String.Format("{0:0.00}", newScore);
@@ -48,4 +82,7 @@ public class UIManager : SingletonPersistant<UIManager>
     {
         cornPerSecondText.text = $"Corn Per Second: {cornPerSecond}";
     }
+    
+
+    
 }

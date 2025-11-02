@@ -13,6 +13,11 @@ public class PopCornMaker : SingletonPersistant<PopCornMaker>
     private List<ICornSpawner> cornToSpawn = new List<ICornSpawner>();
     [SerializeField] private ICornSpawner normalCorn;
 
+    private void Start()
+    {
+        GameManager.Instance.cornClicker.OnClickAction += ClickPopCornSpawn;
+
+    }
     private void Update()
     {
         if (cornToSpawn.Count > 0)
@@ -45,7 +50,7 @@ public class PopCornMaker : SingletonPersistant<PopCornMaker>
         cornSpawnDelay = 0.5f/CPS;
     }
     
-    public void ClickPopCornSpawn()
+    public void ClickPopCornSpawn(float corn)
     {
         normalCorn.Spawn();
     }

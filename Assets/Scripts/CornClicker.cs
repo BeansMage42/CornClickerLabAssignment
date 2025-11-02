@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class CornClicker : MonoBehaviour
     private float cornPerClickMultiplier = 1;
     private float cornPerSecond = 0;
     private float cornPerSecondMult = 1;
+    public Action<float> OnClickAction;
+
 
 
     private void Start()
@@ -23,10 +26,9 @@ public class CornClicker : MonoBehaviour
     {
         score += (basePerClick + cornPerClickFlatModifier) * cornPerClickMultiplier;
         
-        PopCornMaker.Instance.ClickPopCornSpawn();
-        SoundManager.Instance.PlayPopSound();
+        
 
-        UIManager.Instance.UpdateScore(score);
+       OnClickAction?.Invoke(score);
 
         if (score > 50)
         {
