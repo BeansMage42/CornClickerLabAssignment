@@ -72,5 +72,8 @@ I created a system that allows the game to spawn multiple different types of pop
 
 when the corn is clicked it triggers the Popcornmakers normalclick function which activates the normal popcorn spawner which spawns a random popcorn at a random point and rotation within a radius.
 
+Observer:
+ Refer to ObserverPatternDiagram.PNG for diagram
 
+ Observer pattern was harder to impliment than the previous two in this game because there arent many places where I need multiple scripts to react to a singular event. My solution was to change a few of the singleton pattern implimentations into observer. Specifically, when the corn is clicked, I need a sound to play, UI to update and popcorn effects to spawn. Rather than have the cornclicker call each of those, I created an event on the corn clicker called OnClickAction that is invoked when the corn is clicked and then the audio script, UI script and the spawner script all subscribe to this event. This allowed me to remove the singleton pattern from the audiomanager and simplified the cornclicker code. Using the pattern like this will allow me to eventually tie more effects to clicking the corn much more easily and allow me to even create situations where the kind of effects are switched out if I so desired. 
 
