@@ -28,18 +28,13 @@ public class UIManager : SingletonPersistant<UIManager>
         scoreUIObj = scoreUI.gameObject;
         CornPerSecond(0);
         GameManager.Instance.cornClicker.OnClickAction += UpdateScore;
+        GameManager.Instance.cornClicker.OnClickAction += ClickEventJitter;
 
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            jitterSpeed = 1;
-            jitterTimer = 2;
-            currentJitter += jitterClickBoost;
-        }
-        else
-        {
+        
+        
             jitterTimer -= Time.deltaTime;
             if( jitterTimer <= 0 && currentJitter > 0)
             {
@@ -52,12 +47,19 @@ public class UIManager : SingletonPersistant<UIManager>
             {
                 jitterSpeed = 0;
             }
-        }
+        
         jitter.AngleMultiplier = currentJitter;
         jitter.SpeedMultiplier = jitterSpeed;
         jitter.CurveScale = currentJitter * 0.5f * 25f;
 
         
+    }
+    public void ClickEventJitter(float jigglejiggle)
+    {
+        jitterSpeed = 1;
+        jitterTimer = 2;
+        currentJitter = Math.Clamp(currentJitter + jitterClickBoost, 0,maxJitter);
+
     }
 
     public void UpdateScore(float newScore)
